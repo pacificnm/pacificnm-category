@@ -1,0 +1,63 @@
+<?php
+/**
+* Pacific NM (https://www.pacificnm.com)
+*
+* @link      https://github.com/pacificnm/pnm for the canonical source repository
+* @copyright Copyright (c) 20011-2016 Pacific NM USA Inc. (https://www.pacificnm.com)
+* @license
+*/
+?>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				<h3 class="box-title">
+                    <i class="<?php echo $this->layout()->pageIcon; ?>" aria-hidden="true"></i>
+					<?php echo $this->translate($this->layout()->pageTitle); ?> 
+					<small><?php echo $this->translate("Edit"); ?></small>
+				</h3>
+				<div class="box-tools"></div>
+			</div>
+			<div class="box-body">
+                <?php echo $this->form()->openTag($this->form); ?>
+				
+				<div class="row">
+					<div class="col-xs-12 col-sm-8">
+						<?php echo $this->formElementDisplay($this->form->get("categoryName")); ?>
+            		</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-xs-12 col-sm-4">
+						<?php echo $this->formElementDisplay($this->form->get("categoryTypeId")); ?>
+            		</div>
+				</div>
+				
+				
+				<div class="row">
+					<div class="col-xs-12">
+						<?php echo $this->formElementDisplay($this->form->get("categoryActive")); ?>
+					</div>
+				</div>
+		
+                <div class="row">
+					<div class="col-xs-12">
+						<?php echo $this->formElementDisplay($this->form->get("submit")); ?>
+					</div>
+				</div>
+				
+				<?php echo $this->formElementDisplay($this->form->get("categoryId")); ?>
+				
+				<?php echo $this->formElementDisplay($this->form->get("categorySlug")); ?>
+				
+				<?php echo $this->formElementDisplay($this->form->get("categoryParentId")); ?>
+				
+				<?php echo $this->formElementDisplay($this->form->get("categoryRootId")); ?>
+				
+				<?php echo $this->formElementDisplay($this->form->get("categoryLevel")); ?>
+				
+				<?php echo $this->form()->closeTag(); ?>
+			</div>
+		</div>
+	</div>
+</div>

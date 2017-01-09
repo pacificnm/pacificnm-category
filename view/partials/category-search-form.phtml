@@ -1,0 +1,105 @@
+<?php 
+/**
+ * Pacific NM (https://www.pacificnm.com)
+ *
+ * @link      https://github.com/pacificnm/pacificnm-acl for the canonical source repository
+ * @copyright Copyright (c) 20011-2016 Pacific NM USA Inc. (https://www.pacificnm.com)
+ * @license
+ */
+?>
+<form method="get" class="form-horizontal">
+	<div class="modal fade" tabindex="-1" role="dialog" id="category-search">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">
+						<i class="fa fa-list" aria-hidden="true"></i>
+					<?php echo $this->translate('Category Search'); ?></h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="categoryParentId" class="col-sm-2 control-label"><?php echo $this->translate('Category'); ?>:</label>
+						<div class="col-sm-10">
+							<select class="form-control" name="categoryParentId" id="categoryParentId">
+								<option value=""><?php echo $this->translate('Select'); ?></option>
+								<option value="0"><?php echo $this->translate('Root Categories'); ?></option>
+        						<?php foreach($this->entitys as $entity): ?>
+        						<option value="<?php echo $entity->getCategoryId();?>"
+									<?php if(array_key_exists('categoryParentId', $this->queryParams) &&  $this->queryParams['categoryParentId'] == $entity->getCategoryId()):?>
+									selected <?php endif;?>><?php echo $entity->getCategoryName(); ?></option>
+        						<?php endforeach; ?>
+        					</select>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="categoryTypeId" class="col-sm-2 control-label">
+							<?php echo $this->translate('Type'); ?>:
+						</label>
+						<div class="col-sm-10">
+							<select class="form-control" name="categoryTypeId" id="categoryTypeId">
+								<option value=""><?php echo $this->translate('Select'); ?></option>
+        						<?php foreach($this->typeEntitys as $entity): ?>
+        						<option value="<?php echo $entity->getCategoryTypeId()?>" 
+	                                   <?php if(array_key_exists('categoryTypeId', $this->queryParams) && $this->queryParams['categoryTypeId'] == $entity->getCategoryTypeId()):?>selected<?php endif;?>>
+									<?php echo $entity->getCategoryTypeName(); ?>
+        						</option>
+        						<?php endforeach;?>
+        					</select>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="categoryLevel" class="col-sm-2 control-label"><?php echo $this->translate('Level'); ?>:</label>
+						<div class="col-sm-3">
+							<select class="form-control" name="categoryLevel" id="categoryLevel">
+								<option value=""><?php echo $this->translate('Select'); ?></option>
+        						<option value="1"
+									<?php if(array_key_exists('categoryLevel', $this->queryParams) &&  $this->queryParams['categoryLevel'] == 1):?>
+									selected <?php endif;?>>1
+								</option>
+								<option value="2"
+									<?php if(array_key_exists('categoryLevel', $this->queryParams) &&  $this->queryParams['categoryLevel'] == 2):?>
+									selected <?php endif;?>>2
+								</option>
+								<option value="3"
+									<?php if(array_key_exists('categoryLevel', $this->queryParams) &&  $this->queryParams['categoryLevel'] == 3):?>
+									selected <?php endif;?>>3
+								</option>
+								<option value="4"
+									<?php if(array_key_exists('categoryLevel', $this->queryParams) &&  $this->queryParams['categoryLevel'] == 4):?>
+									selected <?php endif;?>>4
+								</option>
+        					</select>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="categoryActive" class="col-sm-2 control-label"><?php echo $this->translate('Active'); ?>:</label>
+						<div class="col-sm-3">
+							<select class="form-control" name="categoryActive" id="categoryActive">
+								<option value=""><?php echo $this->translate('Select'); ?></option>
+        						<option value="1"
+									<?php if(array_key_exists('categoryActive', $this->queryParams) &&  $this->queryParams['categoryActive'] == 1):?>
+									selected <?php endif;?>><?php echo $this->translate("Yes"); ?>
+								</option>
+								<option value="0"
+									<?php if(array_key_exists('categoryActive', $this->queryParams) &&  $this->queryParams['categoryActive'] == 0):?>
+									selected <?php endif;?>><?php echo $this->translate("No"); ?>
+								</option>
+        					</select>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $this->translate('Close'); ?></button>
+					<button type="submit" class="btn btn-primary"><?php echo $this->translate('Search'); ?></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

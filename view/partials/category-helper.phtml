@@ -1,0 +1,47 @@
+<ul class="sidebar-menu">
+	<li class="header"><?php Echo $this->translate("Categories"); ?></li>
+	<?php foreach($this->categoryTree as $tree): ?>
+	<li class="treeview <?php if($tree['categoryChildren'] || $this->categorySlug1 == $tree['categorySlug']):?>active<?php endif; ?>">
+		<a href="<?php echo $tree['categoryUrl']; ?>" title="<?php echo $tree['categoryName']; ?>">
+			<i class="fa fa-circle-o"></i>
+			<?php echo $tree['categoryName']; ?>
+		</a>
+		<?php if($tree['categoryChildren']):?>
+		<ul class="treeview-menu">
+		<?php foreach($tree['categoryChildren'] as $child1): ?>
+			<li <?php if($child1['categoryChildren'] || $this->categorySlug2 == $child1['categorySlug']):?>class="active"<?php endif;?>>
+				<a href="<?php echo $child1['categoryUrl']; ?>" title="<?php echo $child1['categoryName']; ?>">
+					<i class="fa fa-circle-o"></i>
+					<?php echo $child1['categoryName']; ?>
+				</a>
+				<?php if($child1['categoryChildren']):?>
+				<ul class="treeview-menu">
+				<?php foreach($child1['categoryChildren'] as $child2): ?>
+					<li <?php if($child2['categoryChildren'] || $this->categorySlug3 == $child2['categorySlug']):?>class="active"<?php endif;?>>
+						<a href="<?php echo $child2['categoryUrl']; ?>" title="<?php echo $child2['categoryName']; ?>">
+							<i class="fa fa-circle-o"></i>
+							<?php echo $child2['categoryName']; ?>
+						</a>
+						<?php if($child2['categoryChildren']):?>
+						<ul class="treeview-menu">
+						<?php foreach($child2['categoryChildren'] as $child3): ?>
+							<li <?php if($child3['categoryChildren'] || $this->categorySlug4 == $child3['categorySlug']):?>class="active"<?php endif;?>>
+								<a href="<?php echo $child3['categoryUrl']; ?>" title="<?php echo $child3['categoryName']; ?>">
+									<i class="fa fa-circle-o"></i>
+									<?php echo $child3['categoryName']; ?>
+								</a>
+							</li>
+						<?php endforeach; ?>
+						</ul>
+						<?php endif; ?>
+					</li>
+				<?php endforeach;?>
+				</ul>
+				<?php endif; ?>
+			</li>
+		<?php endforeach; ?>
+		</ul>
+		<?php endif; ?>
+	</li>
+	<?php endforeach; ?>
+</ul>
